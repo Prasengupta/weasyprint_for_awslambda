@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>A simple, clean, and responsive HTML invoice template</title>
+    
+    <style>
+     @page {
+            size: Letter;
+            margin: 0in 0.44in 0.2in 0.44in;
+        }
+    .invoice-box{
+        max-width:800px;
+        margin:auto;
+        padding:30px;
+        border:1px solid #eee;
+        box-shadow:0 0 10px rgba(0, 0, 0, .15);
+        font-size:16px;
+        line-height:24px;
+        font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#555;
+    }
+    
+    .invoice-box table{
+        width:100%;
+        line-height:inherit;
+        text-align:left;
+        table-layout:fixed;
+    }
+    
+    .invoice-box table td{
+        padding:5px;
+        vertical-align:top;
+    }
+    
+    .invoice-box table tr td:nth-child(2){
+        text-align:right;
+    }
+    
+    .invoice-box table tr.top table td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.top table td.title{
+        font-size:45px;
+        line-height:45px;
+        color:#333;
+    }
+    
+    .invoice-box table tr.information table td{
+        padding-bottom:40px;
+    }
+    
+    .invoice-box table tr.heading td{
+        background:#eee;
+        border-bottom:1px solid #ddd;
+        font-weight:bold;
+        margin: auto;
+    }
+    
+    .invoice-box table tr.details td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom:1px solid #ddd;
+        margin: auto;
+    }
+    
+    .invoice-box table tr.item.last td{
+        border-bottom:none;
+    }
+    
+    
+    .invoice-box table tr.total td:nth-child(2){
+        border-top:2px solid #eee;
+        font-weight:bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+        
+        .invoice-box table tr.information table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+<!--                 <td class="title" align='right'>
+                    <img src="http://nextstepwebs.com/images/logo.png" style="width:100%; max-width:300px;">
+                </td> -->
+                <td align = 'right'>
+                    Invoice #: {{invoiceId}}<br>
+                    Created: {{createdTime}}<br>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0">
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+
+                        <tr>
+                            <td>
+                            <b> Billing Address </b><br>
+                            {{billingAddress['street']}}<br>
+                            {{billingAddress['city']}}<br>
+                            {{billingAddress['state']}}<br>
+                            {{billingAddress['code']}}<br>
+                            {{billingAddress['country']}}<br>
+                            </td>
+                            
+                            <td>
+                             <b>Shipping Address </b><br>
+                            {{shippingAddress['street']}}<br>
+                            {{shippingAddress['city']}}<br>
+                            {{shippingAddress['state']}}<br>
+                            {{shippingAddress['code']}}<br>
+                            {{shippingAddress['country']}}<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+            
+            <tr class="heading" align="center">
+                <td >
+                    {{subject}}
+                </td>
+                
+            </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                        
+            <tr class="heading">
+                <td>
+                    Product Name
+                </td>
+                
+                <td>
+                    Product Type
+                </td>
+                
+                <td>
+                    Product Active
+                </td>
+                
+                <td>
+                    Unit Price
+                </td>
+                
+                <td>
+                    Tax
+                </td>
+                
+                <td>
+                    Discount
+                </td>
+                
+                <td>
+                    Taxable
+                </td>
+                
+                <td>
+                    Net Total
+                </td>
+                
+                <td>
+                    Quantity
+                </td>
+                
+                <td>
+                    Total
+                </td>               
+            </tr>
+            {% for pd in productDetails %}
+            <tr class="item" style="word-wrap:break-word;">
+            
+                <td>
+                    {{pd['productName']}}
+                </td>
+                
+                <td>
+                    {{pd['productType']}}
+                </td>
+                
+                 <td>
+                    {{pd['productActive']}}
+                </td>
+                
+                <td>
+                    {{pd['unitPrice']}}
+                </td>
+                
+                <td>
+                     {{pd['tax']}}
+                </td>
+                
+                <td>
+                     {{pd['discount']}}
+                </td>
+                
+                <td>
+                     {{pd['taxable']}}
+                </td>
+                <td>
+                     {{pd['netTotal']}}
+                </td>
+                <td>
+                     {{pd['quantity']}}
+                </td>
+                <td>
+                     {{pd['total']}}
+                </td>
+            </tr>
+            {% endfor %}  
+            <table align="right">           
+            <tr class="total">
+                <td>
+                    
+                </td>
+                <td>
+                    
+                </td>
+                <td align="right">
+                   {{grandTotal}}
+                </td>
+            </tr>
+            </table>
+        </table>
+    </div>
+</body>
+</html>
