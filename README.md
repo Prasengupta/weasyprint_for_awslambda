@@ -13,3 +13,5 @@ The above source code works in windows machines but this library will not work i
 
 <b>Step 1:</b> Download the zip file from this repository. <br>
 <b>Step 2:</b> Include your main handler file in the folder and zip it, upload the zip folder to aws lambda.
+
+NOTE: This package doesn't work in windows operating system as it is a lambda package where the lambada runs on centOS
