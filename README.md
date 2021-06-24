@@ -12,6 +12,6 @@ The above source code works in windows machines but this library will not work i
 <h4>How it works in AWS Lambda ?</h4>
 
 <b>Step 1:</b> Download the zip file from this repository. <br>
-<b>Step 2:</b> Include your main handler file in the folder and zip it, upload the zip folder to aws lambda.
+<b>Step 2:</b> Include your main handler file in the folder and zip it, upload the zip folder to aws lambda. Make sure that the runtime is set as Python 2.7
 
 NOTE: This package doesn't work in windows operating system as it is a lambda package where the lambada runs on centOS
